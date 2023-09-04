@@ -1,45 +1,64 @@
-
 class Solution:
-    def gcdOfStrings(self, str1: str, str2: str) -> str:
-        d=""
-        if str1[0]!=str2[0]:
-            return ""
-        
-        s=len(str1)
-        f=len(str2)
-        m=gcd(s,f)
-        print(m)
-        print(s)
-        print(f)
-        k=0
-        for x in range(m,len(str1)):
+    def kidsWithCandies(self, candies: List[int], extraCandies: int) -> List[bool]:
+        l = 0
+        for i in range(len(candies)):
             
             
-            if k==len(str2):
-                k=0
-            if str1[x]==str2[k]:
-                k+=1
+            if candies[i]>l:
+                l = candies[i]
             
-
+        for j in range(len(candies)):
+            p = candies[j] + extraCandies
+            if p >= l:
+                candies[j] = 1
             else:
-                return ""
-                     
-        for x in range(m):  
-            d+=str2[x]  
-               
-        return d
-def gcd(a, b):
- 
-    # Everything divides 0
-    if a == 0 or b==0:
-        return 0
- 
-    # base case
-    if a == b:
-        return a
- 
-    # a is greater
-    if a > b:
-        return gcd(a-b, b)
-    return gcd(a, b-a)        
+                candies[j] = 0
+        return candies            
+
         
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    #Brute Force    
+        '''
+        result = [None] * len(candies)
+        for i in range(len(candies)):
+            g = 1
+            print(result)
+            print("c",candies[i])
+            s = candies[i]+extraCandies
+            print("s:",s)
+            for j in range(len(candies)):
+                print(candies[j])
+                if s < candies[j]:
+                    print("l")
+                    g = 0
+                    break
+            print("g:",g)
+            if g == 0:
+                print("O:")
+                result[i] = 0
+            else:
+                result[i] = 1    
+        s=result
+        print(s)
+        return s'''
